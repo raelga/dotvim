@@ -18,15 +18,14 @@ brew install cabal-install
 ## Install
 
 ```bash
-git clone git://github.com/raelga/dotvim.git .vim
-cd .vim
+git clone git://github.com/raelga/dotvim.git ~/.vim
 ln -s ~/.vim/vimrc ~/.vimrc
 ```
 
 ### Install Vundle
 
 ```bash
-bash ~/.vim/bundle/README.md
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
 ### Install other plugins using vundle
@@ -35,6 +34,11 @@ bash ~/.vim/bundle/README.md
 vim +':BundleInstall' +':q!' +':q!'
 ```
 
+# Add extra support for ycm
+
+```bash
+python ~/.vim/bundle/install.py --gocode-completer --clang-completer
+```
 
 ## Customization
 
@@ -43,4 +47,3 @@ vim +':BundleInstall' +':q!' +':q!'
 ```
 
 If your shell login is *foo*, create the file *~/.vim/vimrc.foo*.
-

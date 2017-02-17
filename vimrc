@@ -39,6 +39,7 @@ Plugin 'python-mode/python-mode'        " Python syntax and helpers
 Plugin 'eagletmt/ghcmod-vim'            " Haskell syntax and helpers
 " Git
 Plugin 'airblade/vim-gitgutter'         " Git helper
+Plugin 'tpope/vim-fugitive'                 " Git helper
 " Format
 Plugin 'Yggdroot/indentLine'            " Mark identations with a symbol
 Plugin 'michalliu/jsruntime.vim'        " JS/JSON stuff
@@ -174,6 +175,9 @@ map <leader>tb :TagbarToggle<cr>        " TagBar > Toggle (toggle file tags)
 set nocompatible                        " Sorry vi :'(
 set laststatus=2                        " Show the status line
 
+set ttyfast                             " Faster screen redrawing
+set clipboard=unnamed                   " Use OS clipboard
+
 set visualbell                          " Screen blink instead of beeping
 set noerrorbells                        " Don't ring the bell on errors
 
@@ -186,6 +190,7 @@ let g:Powerline_symbols = 'fancy'       " Powerline symbols set
 
 set number                              " Show line numbers column
 set numberwidth=3                       " Line number column width
+set relativenumber                      " Line number relative to current line
 set cursorline                          " Highlight the current line
 set cursorcolumn                        " Highlight the current column
 set guicursor+=a:blinkon0               " Turn off cursor blinking
