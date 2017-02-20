@@ -180,7 +180,7 @@ endif
 set novisualbell                        " Screen blink instead of beeping
 set noerrorbells                        " Don't ring the bell on errors
 
-set listchars=tab:▸\ ,eol:¬,extends:#,nbsp:.,trail:.
+set listchars=tab:»\ ,eol:¬,extends:#,nbsp:.,trail:.
 set list                                " Show hidden characters (customized)
 
 colorscheme jellybeans                  " Default theme
