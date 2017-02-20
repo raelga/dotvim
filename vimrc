@@ -62,7 +62,7 @@ noremap <Leader>, :NERDTreeToggle<cr>   " Toggle > NERDTree window
 " ctrlpvim
 "
 let g:ctrlp_working_path_mode = 'ra'    " The nearest ancestor with .git (+a)
-let g:ctrlp_user_command = 'find %s -maxdepth 5 -type f' " Custom find cmd
+let g:ctrlp_user_command = 'find %s -maxdepth 10 -type f' " Custom find cmd
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(swp|so|dll|exe)$' }   " Ignore some dirs/expensions
