@@ -17,21 +17,21 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 
+" Utils
+Plugin 'VundleVim/Vundle.vim'           " Plugin manager
+Plugin 'scrooloose/nerdtree'            " File explorer
+Plugin 'ctrlpvim/ctrlp.vim'             " Full path fuzzy finder
+Plugin 'tpope/vim-repeat'               " Repeat last command (plus)
+Plugin 'tpope/vim-surround'             " Block tokens helper
+Plugin 'tpope/vim-commentary'           " Comment helper
+Plugin 'scrooloose/syntastic'           " Syntax checking
+Plugin 'SirVer/ultisnips'               " Snippet engine
+Plugin 'honza/vim-snippets'             " Snippet collection
+Plugin 'ervandew/supertab'              " Tab helper
 " Interface
 Plugin 'vim-airline/vim-airline'        " Fancy status bar
 Plugin 'vim-airline/vim-airline-themes' " Fancier status bar themes
 Plugin 'majutsushi/tagbar'              " Tags explorer
-" Utils
-Plugin 'VundleVim/Vundle.vim'           " Plugin manager
-Plugin 'scrooloose/nerdtree'            " File explorer
-Plugin 'scrooloose/nerdcommenter'       " Comment helper
-Plugin 'ctrlpvim/ctrlp.vim'             " Full path fuzzy finder
-Plugin 'tpope/vim-repeat'               " Repeat last command 
-Plugin 'tpope/vim-surround'             " Block tokens helper
-Plugin 'scrooloose/syntastic'           " Syntax checking
-Plugin 'SirVer/ultisnips'               " Snippet engine
-Plugin 'honza/vim-snippets'             " Snippet collection
-Plugin 'Valloric/YouCompleteMe'         " Tab completion
 " Languages
 Plugin 'vim-perl/vim-perl'              " Perl syntax and helpers
 Plugin 'fatih/vim-go'                   " Golang syntax and helpers
@@ -39,13 +39,10 @@ Plugin 'python-mode/python-mode'        " Python syntax and helpers
 Plugin 'eagletmt/ghcmod-vim'            " Haskell syntax and helpers
 " Git
 Plugin 'airblade/vim-gitgutter'         " Git helper
-Plugin 'tpope/vim-fugitive'                 " Git helper
+Plugin 'tpope/vim-fugitive'             " Git helper
 " Format
 Plugin 'Yggdroot/indentLine'            " Mark identations with a symbol
-Plugin 'michalliu/jsruntime.vim'        " JS/JSON stuff
-Plugin 'michalliu/jsflakes.vim'         " to enable
-Plugin 'michalliu/jsoncodecs.vim'       " the plugin below
-Plugin 'michalliu/sourcebeautify.vim'   " Parse anf format JS/JSON  <Leader>sb
+Plugin 'godlygeek/tabular'              " Text filtering and alignment
 
 call vundle#end()            " required
 
@@ -112,7 +109,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*                      " Show syntastic info on the status bar
 let g:syntastic_always_populate_loc_list = 1 " List errors on location list
 let g:syntastic_loc_list_height = 5     " Error list max height
-let g:syntastic_auto_loc_list = 1       " Open/close error list automatically 
+let g:syntastic_auto_loc_list = 1       " Open/close error list automatically
 let g:syntastic_check_on_open = 0       " Enable syntax check on open
 let g:syntastic_check_on_wq = 0         " Disable syntax check on exit
 let g:syntastic_enable_highlighting = 1 " Enable error highlighting
@@ -145,7 +142,7 @@ let g:syntastic_go_checkers = [
                     \ 'govet',
                     \ 'errcheck']       " vim-go/syntastic compatibility config
 let g:go_list_type = "quickfix"         " Location list fix for syntastic
-let g:go_highlight_functions = 1        " Syntax highlight function 
+let g:go_highlight_functions = 1        " Syntax highlight function
 let g:go_highlight_methods = 1          " Syntax highlight methods
 let g:go_highlight_fields = 1           " Syntax highlight fields
 let g:go_highlight_types = 1            " Syntax highlight types
@@ -153,7 +150,7 @@ let g:go_highlight_operators = 1        " Syntax highlight operators
 let g:go_highlight_build_constraints = 1 " Syntax highlight build constraints
 "
 " Haskell
-" 
+"
 au FileType haskell map <silent> htw :GhcModTypeInsert<CR>
 au FileType haskell map <silent> hts :GhcModSplitFunCase<CR>
 au FileType haskell map <silent> htq :GhcModType<CR>
@@ -176,7 +173,9 @@ set nocompatible                        " Sorry vi :'(
 set laststatus=2                        " Show the status line
 
 set ttyfast                             " Faster screen redrawing
-set clipboard=unnamed                   " Use OS clipboard
+if $TMUX == ''
+  set clipboard=unnamed                 " Use OS clipboard
+endif
 
 set visualbell                          " Screen blink instead of beeping
 set noerrorbells                        " Don't ring the bell on errors

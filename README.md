@@ -37,7 +37,7 @@ vim +':BundleInstall' +':q!' +':q!'
 # Add extra support for ycm
 
 ```bash
-python ~/.vim/bundle/install.py --gocode-completer --clang-completer
+python ~/.vim/bundle/YouCompleteMe/install.py --gocode-completer --clang-completer
 ```
 
 ## Customization
