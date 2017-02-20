@@ -177,7 +177,7 @@ if $TMUX == ''
   set clipboard=unnamed                 " Use OS clipboard
 endif
 
-set visualbell                          " Screen blink instead of beeping
+set novisualbell                        " Screen blink instead of beeping
 set noerrorbells                        " Don't ring the bell on errors
 
 set listchars=tab:▸\ ,eol:¬,extends:#,nbsp:.,trail:.
