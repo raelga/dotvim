@@ -323,7 +323,7 @@ cmap w!! w !sudo tee % >/dev/null
 " Filetype customizations
 " -----------------------------------------------------------------------------
 
-filetype plugin on                      " Enable perl filetype file
+"filetype plugin on                      " Enable perl filetype file
 filetype plugin indent on               " Enable language-dependent indenting
 
 " perl    --> ftplugin/perl.vim
@@ -337,6 +337,58 @@ au BufRead,BufNewFile *.t,*.cgi set filetype=perl
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
 au BufRead,BufNewFile *.json setf json
 au FileType json set filetype=javascript foldmethod=syntax
+
+" ------------------------
+" Perl Programing Language
+" ------------------------
+
+" Keybindings
+"
+map <Leader>pdc :!perldoc %<cr>          " Open perldoc for current file
+map <Leader>pdm :!perldoc <cword><cr>
+map <Leader>pdf :!perldoc -f <cword><cr>
+
+map <Leader>x :!perl -Ilib %<cr>
+
+
+" ,T perl tests
+"nmap <Leader>T :let g:testfile = expand("%")<cr>:echo "testfile is now" g:testfile<cr>:call Prove (1,1)<cr>
+function! Prove ( verbose, taint )
+    let g:testfile = expand("%")
+    if ! exists("g:testfile") || ! (g:testfile =~ "\.t$")
+        let g:testfile = "t/*.t"
+    endif
+    if g:testfile == "t/*.t" || g:testfile =~ "\.t$"
+        let s:params = "lvrc"
+        if a:verbose
+            let s:params = s:params . "v"
+        endif
+        let s:pexec = "carton exec prove"
+        let s:pargs = "--timer --normalize --state=save -" . s:params
+        execute ":tabe | read ! ".s:pexec." ".s:pargs." ".g:testfile
+    else
+        call Compile ()
+    endif
+endfunction
+
+function! Compile ()
+    if ! exists("g:compilefile")
+        let g:compilefile = expand("%")
+    endif
+    execute ":new | read !perl -wc -Ilib " . g:compilefile
+endfunction
+
+autocmd BufRead,BufNewFile *.t,*.pl,*.plx,*.pm nmap <Leader>pt :call Prove (1,1)<cr>
+autocmd BufRead,BufNewFile *.t,*.pl,*.plx,*.pm nmap <Leader>pc :call Compile ()<cr>
+
+" open installed perl modules
+au FileType perl command! -nargs=1 PerlModuleSource :tabnew `perldoc -lm <args>`
+au FileType perl setlocal iskeyword+=:
+au FileType perl nmap <leader>P :PerlModuleSource <cword><cr>zR<cr>
+
+" perltidy
+au FileType perl command! -range=% -nargs=* Tidy <line1>,<line2>!perltidy
+
 
 " -----------------------------------------------------------------------------
 " Extra
