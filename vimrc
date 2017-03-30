@@ -21,27 +21,24 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'           " Plugin manager
 Plugin 'scrooloose/nerdtree'            " File explorer
 Plugin 'ctrlpvim/ctrlp.vim'             " Full path fuzzy finder
-Plugin 'tpope/vim-repeat'               " Repeat last command (plus)
-Plugin 'tpope/vim-surround'             " Block tokens helper
-Plugin 'tpope/vim-commentary'           " Comment helper
+"Plugin 'tpope/vim-commentary'           " Comment helper
 Plugin 'scrooloose/syntastic'           " Syntax checking
 Plugin 'SirVer/ultisnips'               " Snippet engine
 Plugin 'honza/vim-snippets'             " Snippet collection
-Plugin 'ervandew/supertab'              " Tab helper
+"Plugin 'ervandew/supertab'              " Tab helper
 " Interface
 Plugin 'vim-airline/vim-airline'        " Fancy status bar
 Plugin 'vim-airline/vim-airline-themes' " Fancier status bar themes
 Plugin 'majutsushi/tagbar'              " Tags explorer
 " Languages
 Plugin 'vim-perl/vim-perl'              " Perl syntax and helpers
-Plugin 'fatih/vim-go'                   " Golang syntax and helpers
-Plugin 'python-mode/python-mode'        " Python syntax and helpers
+"Plugin 'python-mode/python-mode'        " Python syntax and helpers
 Plugin 'eagletmt/ghcmod-vim'            " Haskell syntax and helpers
 " Git
 Plugin 'airblade/vim-gitgutter'         " Git helper
-Plugin 'tpope/vim-fugitive'             " Git helper
+"Plugin 'tpope/vim-fugitive'             " Git helper
 " Format
-Plugin 'Yggdroot/indentLine'            " Mark identations with a symbol
+" Plugin 'Yggdroot/indentLine'            " Mark identations with a symbol
 Plugin 'godlygeek/tabular'              " Text filtering and alignment
 
 call vundle#end()            " required
@@ -110,10 +107,11 @@ set statusline+=%*                      " Show syntastic info on the status bar
 let g:syntastic_always_populate_loc_list = 1 " List errors on location list
 let g:syntastic_loc_list_height = 5     " Error list max height
 let g:syntastic_auto_loc_list = 1       " Open/close error list automatically
-let g:syntastic_check_on_open = 0       " Enable syntax check on open
+let g:syntastic_check_on_open = 0       " Disable syntax check on open
 let g:syntastic_check_on_wq = 0         " Disable syntax check on exit
 let g:syntastic_enable_highlighting = 1 " Enable error highlighting
 let g:syntastic_enable_perl_checker = 1 " Enable perl checker
+let g:syntastic_enable_signs        = 0 " Disable syntax highlighting
 let g:syntastic_mode_map = {
       \ 'mode': 'active',
       \ 'passive_filetypes': ['go'] }   " Passive mode for go, will use vim-go
@@ -349,7 +347,6 @@ map <Leader>pdm :!perldoc <cword><cr>
 map <Leader>pdf :!perldoc -f <cword><cr>
 
 map <Leader>x :!perl -Ilib %<cr>
-
 
 " ,T perl tests
 "nmap <Leader>T :let g:testfile = expand("%")<cr>:echo "testfile is now" g:testfile<cr>:call Prove (1,1)<cr>
